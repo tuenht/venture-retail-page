@@ -3,56 +3,627 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venture Retail AI Consulting</title>
+    <title>Venture Retail | AI-Powered Retail Transformation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --bg-tertiary: #fafafa;
+            --text-primary: #000000;
+            --text-secondary: #6e6e73;
+            --text-muted: #86868b;
+            --accent-blue: #0071e3;
+            --accent-dark: #1d1d1f;
+            --border-color: #d2d2d7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: #0a0a0a;
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation - Apple Style */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 0 5%;
+            height: 52px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta {
+            background: var(--accent-blue);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #0077ed;
+        }
+
+        /* Hero Section - Apple Typography Focus */
+        .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
             text-align: center;
-            padding: 2rem;
+            background: var(--bg-primary);
+            position: relative;
         }
-        .container { max-width: 900px; }
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 6.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ff4d4d 0%, #f9cb28 100%);
+            max-width: 1000px;
+        }
+
+        .hero h1 .line1 {
+            display: block;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .hero h1 .line2 {
+            display: block;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        p {
-            font-size: 1.3rem;
-            color: #888;
-            margin-bottom: 2rem;
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
             line-height: 1.6;
         }
-        .cta {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.2s;
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .cta:hover { transform: scale(1.05); }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #0077ed;
+        }
+
+        .btn-text {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .btn-text:hover {
+            gap: 0.75rem;
+        }
+
+        .btn-text::after {
+            content: '→';
+        }
+
+        /* Hero Image/Visual */
+        .hero-visual {
+            margin-top: 4rem;
+            width: 100%;
+            max-width: 1200px;
+            height: 500px;
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--accent-blue), #5856d6);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .visual-stat {
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+        }
+
+        .visual-label {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            padding: 8rem 5%;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .case-card {
+            background: var(--bg-primary);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .case-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.1);
+        }
+
+        .case-image {
+            height: 240px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .case-content {
+            padding: 2rem;
+        }
+
+        .case-industry {
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .case-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .case-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-result {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            letter-spacing: -0.02em;
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 5%;
+            background: var(--bg-primary);
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: var(--bg-secondary);
+            border-radius: 32px;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: #0077ed;
+            transform: scale(1.05);
+        }
+
+        .cta-note {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Features Strip */
+        .features-strip {
+            padding: 4rem 5%;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .feature {
+            padding: 1rem;
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-text {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .visual-stat {
+                font-size: 3rem;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-container {
+                padding: 2.5rem 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Retail is Dead. AI is Here.</h1>
-        <p>Transform your retail business with AI-powered automation, demand forecasting, and intelligent customer experiences. The future belongs to those who adapt.</p>
-        <a href="#contact" class="cta">Get AI Strategy</a>
-    </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Venture Retail</div>
+        <ul class="nav-links">
+            <li><a href="#cases">Case Studies</a></li>
+            <li><a href="#features">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#audit" class="nav-cta">Book Audit</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">AI-Powered Retail Intelligence</div>
+        <h1>
+            <span class="line1">Retail is Dead.</span>
+            <span class="line2">AI is Here.</span>
+        </h1>
+        <p class="hero-subtitle">
+            We help traditional retailers cut costs by 40% and increase margins through 
+            intelligent automation, predictive analytics, and AI-driven operations.
+        </p>
+        <div class="hero-cta">
+            <a href="#audit" class="btn-primary">Book Free Audit</a>
+            <a href="#cases" class="btn-text">View Case Studies</a>
+        </div>
+
+        <div class="hero-visual">
+            <div class="visual-content">
+                <div class="visual-stat">40%</div>
+                <div class="visual-label">Average Cost Reduction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies" id="cases">
+        <div class="section-header">
+            <p class="section-tag">Proven Results</p>
+            <h2 class="section-title">Client Transformations</h2>
+            <p class="section-subtitle">Real results from real retailers who embraced AI-powered operations.</p>
+        </div>
+
+        <div class="cases-grid">
+            <!-- Case 1 -->
+            <div class="case-card">
+                <div class="case-image">🏪</div>
+                <div class="case-content">
+                    <p class="case-industry">Mid-Size Grocery Chain</p>
+                    <h3 class="case-title">Automated Inventory Management</h3>
+                    <p class="case-desc">
+                        Implemented AI forecasting to reduce food waste and optimize stock levels 
+                        across 23 locations. Eliminated manual ordering processes.
+                    </p>
+                    <div class="case-result">
+                        <span class="result-number">42%</span>
+                        <span class="result-label">Inventory cost reduction<br>in 6 months</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="case-card">
+                <div class="case-image">👕</div>
+                <div class="case-content">
+                    <p class="case-industry">Fashion Retailer</p>
+                    <h3 class="case-title">Dynamic Pricing Engine</h3>
+                    <p class="case-desc">
+                        Deployed real-time pricing algorithms that adjust based on demand, 
+                        competitor analysis, and inventory aging. Increased margin per SKU.
+                    </p>
+                    <div class="case-result">
+                        <span class="result-number">38%</span>
+                        <span class="result-label">Margin improvement<br>year-over-year</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="case-card">
+                <div class="case-image">📦</div>
+                <div class="case-content">
+                    <p class="case-industry">E-commerce Fulfillment</p>
+                    <h3 class="case-title">Warehouse Automation</h3>
+                    <p class="case-desc">
+                        Replaced legacy warehouse management with AI-optimized pick routes, 
+                        staffing predictions, and automated quality control systems.
+                    </p>
+                    <div class="case-result">
+                        <span class="result-number">55%</span>
+                        <span class="result-label">Faster fulfillment<br>same headcount</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Strip -->
+    <section class="features-strip" id="features">
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h4>Process Automation</h4>
+                <p>Eliminate repetitive tasks with intelligent workflows</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h4>Predictive Analytics</h4>
+                <p>Forecast demand and trends with machine learning</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h4>Personalization</h4>
+                <p>AI-driven customer experiences that convert</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h4>Real-Time Insights</h4>
+                <p>Live dashboards for instant decision making</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="audit">
+        <div class="cta-container">
+            <h2>Ready to Cut Costs?</h2>
+            <p>Get a free 30-minute audit of your current operations. We'll identify immediate AI opportunities worth $100K+ in savings.</p>
+            <a href="mailto:audit@ventureretail.com" class="cta-btn">Book Your Free Audit →</a>
+            <p class="cta-note">No commitment required. 100% confidential.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Venture Retail Consulting. All rights reserved.</p>
+    </footer>
 </body>
 </html>
