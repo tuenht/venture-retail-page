@@ -3,398 +3,437 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoTax Bot | Automated Crypto Tax Reporting</title>
+    <title>CryptoTax Bot | Automated Crypto Tax Reports in Minutes</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
         header {
             padding: 20px 0;
-            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky;
+            top: 0;
+            background: rgba(10,10,15,0.95);
             backdrop-filter: blur(10px);
+            z-index: 100;
         }
-
-        nav {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo svg {
-            width: 32px;
-            height: 32px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
+            font-size: 24px;
             font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a {
+            color: #a0a0b0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
         }
-
-        .cta-button {
-            display: inline-block;
-            background: #00d4aa;
-            color: #1a1a2e;
-            padding: 18px 48px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
+        .nav-links a:hover { color: #fff; }
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
             text-decoration: none;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
         }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 170, 0.4);
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            color: white;
         }
-
-        .features {
-            background: white;
-            padding: 80px 0;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,212,255,0.3);
         }
-
-        .features h2 {
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+        }
+        .btn-secondary:hover {
+            border-color: #00d4ff;
+            color: #00d4ff;
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 100px 0 80px;
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: #1a1a2e;
+            background: radial-gradient(ellipse at top, rgba(0,212,255,0.15) 0%, transparent 50%);
         }
-
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0,212,255,0.1);
+            border: 1px solid rgba(0,212,255,0.3);
+            border-radius: 50px;
+            font-size: 13px;
+            color: #00d4ff;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #a0a0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #a0a0b0;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .stat-item { text-align: center; }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #00d4ff;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #606070;
+        }
+        
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: #07070a;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .section-header p {
+            color: #a0a0b0;
+            font-size: 18px;
+        }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
         }
-
         .feature-card {
-            background: #f8f9fa;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
             border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            border-color: rgba(0,212,255,0.3);
+            transform: translateY(-4px);
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            color: white;
-            font-size: 28px;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #1a1a2e;
+            font-size: 20px;
+            margin-bottom: 12px;
         }
-
         .feature-card p {
-            color: #666;
-            line-height: 1.8;
+            color: #808090;
+            font-size: 15px;
+            line-height: 1.6;
         }
-
+        
+        /* How It Works */
         .how-it-works {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            padding: 80px 0;
+            padding: 100px 0;
+            background: radial-gradient(ellipse at bottom, rgba(123,44,191,0.1) 0%, transparent 50%);
         }
-
-        .how-it-works h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-        }
-
         .steps {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            justify-content: center;
             gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 60px;
         }
-
         .step {
-            text-align: center;
             flex: 1;
-            min-width: 250px;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: center;
+            position: relative;
         }
-
         .step-number {
             width: 60px;
             height: 60px;
-            background: #00d4aa;
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
-            color: #1a1a2e;
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 auto 24px;
         }
-
         .step h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 22px;
+            margin-bottom: 12px;
         }
-
         .step p {
-            opacity: 0.8;
+            color: #808090;
         }
-
+        
+        /* Pricing */
         .pricing {
-            background: white;
-            padding: 80px 0;
+            padding: 100px 0;
+            background: #07070a;
         }
-
-        .pricing h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: #1a1a2e;
-        }
-
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 900px;
+            gap: 24px;
+            max-width: 1000px;
             margin: 0 auto;
         }
-
         .pricing-card {
-            background: #f8f9fa;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
             padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: all 0.3s;
+            position: relative;
         }
-
         .pricing-card.popular {
-            border-color: #667eea;
-            transform: scale(1.05);
+            border-color: #00d4ff;
+            background: rgba(0,212,255,0.05);
         }
-
-        .pricing-card.popular .pricing-badge {
-            background: #667eea;
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 20px;
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
         }
-
         .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #1a1a2e;
+            font-size: 20px;
+            margin-bottom: 8px;
         }
-
         .price {
-            font-size: 3rem;
+            font-size: 48px;
             font-weight: 800;
-            color: #667eea;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
-
         .price span {
-            font-size: 1rem;
-            color: #666;
+            font-size: 16px;
+            color: #606070;
             font-weight: 400;
         }
-
         .pricing-features {
             list-style: none;
-            margin-bottom: 30px;
+            margin: 30px 0;
         }
-
         .pricing-features li {
             padding: 10px 0;
-            color: #666;
+            color: #a0a0b0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
         .pricing-features li::before {
             content: "✓";
-            color: #00d4aa;
-            font-weight: bold;
-            margin-right: 10px;
+            color: #00d4ff;
+            font-weight: 700;
         }
-
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 0;
+        .pricing-card .btn {
+            width: 100%;
             text-align: center;
+            display: block;
         }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(123,44,191,0.1) 100%);
+        }
+        .cta h2 {
+            font-size: 40px;
             margin-bottom: 20px;
         }
-
-        .cta-section p {
-            font-size: 1.25rem;
+        .cta p {
+            color: #a0a0b0;
+            font-size: 18px;
             margin-bottom: 40px;
-            opacity: 0.9;
         }
-
+        
+        /* Footer */
         footer {
-            background: #1a1a2e;
-            color: white;
-            padding: 40px 0;
+            padding: 60px 0 30px;
+            background: #050508;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-section h4 {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+        .footer-section a {
+            color: #606070;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .footer-section a:hover {
+            color: #00d4ff;
+        }
+        .footer-bottom {
             text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #404050;
+            font-size: 13px;
         }
-
-        footer p {
-            opacity: 0.6;
-        }
-
+        
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .pricing-card.popular {
-                transform: none;
-            }
+            .hero h1 { font-size: 36px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .nav-links { display: none; }
+            .features-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <nav>
-                <div class="logo">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                    CryptoTax Bot
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                </ul>
-            </nav>
+            <div class="header-content">
+                <div class="logo">⚡ CryptoTax Bot</div>
+                <nav class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#" class="btn btn-secondary">Sign In</a>
+                    <a href="#pricing" class="btn btn-primary">Get Started</a>
+                </nav>
+            </div>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>Crypto Taxes Made Simple</h1>
-            <p>Automatically calculate your crypto taxes in minutes. Connect your exchanges, wallets, and DeFi protocols. Download your tax report instantly.</p>
-            <a href="#pricing" class="cta-button">Start Free Trial</a>
+            <div class="hero-badge">🚀 Trusted by 50,000+ Crypto Traders</div>
+            <h1>Crypto Tax Reports<br>Generated in Minutes</h1>
+            <p>Connect your exchanges & wallets. We calculate your gains, losses, and tax liability automatically. IRS-compliant Form 8949 included.</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn btn-primary">Start Free Trial</a>
+                <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">$2.4B+</div>
+                    <div class="stat-label">Transactions Processed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Exchanges Supported</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15 min</div>
+                    <div class="stat-label">Avg. Report Time</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="features" id="features">
         <div class="container">
-            <h2>Everything You Need for Crypto Taxes</h2>
+            <div class="section-header">
+                <h2>Everything You Need for Crypto Taxes</h2>
+                <p>Stop spending weeks on spreadsheets. Our bot handles the complexity.</p>
+            </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Auto-Sync Exchanges</h3>
-                    <p>Connect 500+ exchanges and wallets via API. Your transactions sync automatically in real-time.</p>
+                    <div class="feature-icon">🔗</div>
+                    <h3>500+ Exchange Integrations</h3>
+                    <p>Connect Binance, Coinbase, Kraken, Uniswap, and 500+ more via API or CSV. DeFi protocols included.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🤖</div>
-                    <h3>Smart Tax Engine</h3>
-                    <p>Our AI calculates cost basis, capital gains, and losses using FIFO, LIFO, or HIFO methods.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>DeFi & NFT Support</h3>
-                    <p>Full support for staking, lending, liquidity mining, and NFT transactions across all major chains.</p>
+                    <h3>AI-Powered Cost Basis</h3>
+                    <p>Smart algorithms track your cost basis across multiple wallets. Supports FIFO, LIFO, HIFO, and specific ID.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📄</div>
-                    <h3>IRS-Ready Reports</h3>
-                    <p>Download Form 8949, Schedule D, and international tax reports compatible with TurboTax and H&R Block.</p>
+                    <h3>IRS-Compliant Forms</h3>
+                    <p>Auto-generate Form 8949, Schedule D, and international tax reports. Ready to file or send to your CPA.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Bank-Grade Security</h3>
-                    <p>256-bit encryption, SOC 2 compliance, and read-only API access keep your data safe.</p>
+                    <div class="feature-icon">🔄</div>
+                    <h3>Real-Time Sync</h3>
+                    <p>Your transactions sync automatically. New trade? Your tax liability updates instantly.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>Expert Support</h3>
-                    <p>Get help from certified crypto tax professionals via live chat and email.</p>
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Audit Defense</h3>
+                    <p>Every calculation includes a detailed audit trail. Export complete transaction histories with cost basis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Tax Loss Harvesting</h3>
+                    <p>Identify unrealized losses to offset gains. Save thousands on your tax bill before year-end.</p>
                 </div>
             </div>
         </div>
@@ -402,22 +441,25 @@
 
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <h2>How It Works</h2>
+            <div class="section-header">
+                <h2>From Chaos to Filed in 3 Steps</h2>
+                <p>No accounting degree required. Our bot does the heavy lifting.</p>
+            </div>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Connect Your Accounts</h3>
-                    <p>Link your exchanges and wallets securely with API or CSV import</p>
+                    <p>Link your exchanges and wallets via secure read-only API or upload CSV files. Takes 2 minutes.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Review Transactions</h3>
-                    <p>Our system categorizes and calculates everything automatically</p>
+                    <h3>Review Your Dashboard</h3>
+                    <p>See all your transactions, gains, losses, and tax liability in one clean dashboard. Spot any issues instantly.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Download Report</h3>
-                    <p>Get your complete tax report ready to file in minutes</p>
+                    <h3>Download & File</h3>
+                    <p>Export IRS Form 8949, Schedule D, or any international format. File yourself or send to your accountant.</p>
                 </div>
             </div>
         </div>
@@ -425,59 +467,103 @@
 
     <section class="pricing" id="pricing">
         <div class="container">
-            <h2>Simple, Transparent Pricing</h2>
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Start free. Upgrade when you need more power.</p>
+            </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Free</h3>
                     <div class="price">$0<span>/year</span></div>
                     <ul class="pricing-features">
-                        <li>Up to 50 transactions</li>
+                        <li>Up to 100 transactions</li>
+                        <li>3 exchange connections</li>
                         <li>Basic tax summary</li>
-                        <li>CSV export</li>
-                        <li>Email support</li>
+                        <li>Community support</li>
                     </ul>
-                    <a href="#" class="cta-button" style="padding: 12px 30px; font-size: 1rem;">Get Started</a>
+                    <a href="#" class="btn btn-secondary">Get Started</a>
                 </div>
                 <div class="pricing-card popular">
-                    <div class="pricing-badge">Most Popular</div>
+                    <div class="popular-badge">MOST POPULAR</div>
                     <h3>Pro</h3>
                     <div class="price">$49<span>/year</span></div>
                     <ul class="pricing-features">
                         <li>Unlimited transactions</li>
-                        <li>All tax forms (8949, Schedule D)</li>
+                        <li>Unlimited exchanges</li>
+                        <li>IRS Form 8949 & Schedule D</li>
                         <li>DeFi & NFT support</li>
-                        <li>Priority support</li>
                         <li>Tax loss harvesting</li>
+                        <li>Priority email support</li>
                     </ul>
-                    <a href="#" class="cta-button" style="padding: 12px 30px; font-size: 1rem;">Start Free Trial</a>
+                    <a href="#" class="btn btn-primary">Start Free Trial</a>
                 </div>
                 <div class="pricing-card">
                     <h3>CPA</h3>
                     <div class="price">$199<span>/year</span></div>
                     <ul class="pricing-features">
                         <li>Everything in Pro</li>
-                        <li>CPA review included</li>
-                        <li>Audit defense</li>
+                        <li>Multiple tax years</li>
                         <li>Amendment support</li>
-                        <li>White-glove onboarding</li>
+                        <li>CPA review included</li>
+                        <li>Audit defense package</li>
+                        <li>White-glove support</li>
                     </ul>
-                    <a href="#" class="cta-button" style="padding: 12px 30px; font-size: 1rem;">Contact Sales</a>
+                    <a href="#" class="btn btn-secondary">Contact Sales</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section">
+    <section class="cta">
         <div class="container">
-            <h2>Ready to Simplify Your Crypto Taxes?</h2>
-            <p>Join 50,000+ crypto investors who trust CryptoTax Bot</p>
-            <a href="#" class="cta-button" style="background: white; color: #667eea;">Get Started for Free</a>
+            <h2>Ready to Ditch the Spreadsheet?</h2>
+            <p>Join 50,000+ traders who file their crypto taxes in minutes, not weeks.</p>
+            <a href="#pricing" class="btn btn-primary">Get Started Free →</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 CryptoTax Bot. All rights reserved. Not financial advice.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Tax Guide</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Docs</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 CryptoTax Bot. All rights reserved. Not financial advice.</p>
+            </div>
         </div>
     </footer>
 </body>
